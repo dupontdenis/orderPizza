@@ -6,7 +6,7 @@ let orderArray = [];
 export function initializeForm() {
   const form = document.getElementById("pizza-form");
   const orderList = document.getElementById("order-list");
-  const pizzasSelect = document.getElementById("pizzas");
+  const pizzasSelect = document.getElementById("selectPizza");
   const resetButton = document.getElementById("reset-button");
 
   if (form && orderList && pizzasSelect && resetButton) {
@@ -33,14 +33,14 @@ export function initializeForm() {
 
 function appendOrderList(selectedPizzas) {
   const pizzaEmojis = {
-    "Pepperoni": "🍕",
-    "Vegetarian": "🥗",
+    Pepperoni: "🍕",
+    Vegetarian: "🥗",
     "Meat Lovers": "🥩",
-    "Hawaiian": "🍍",
-    "Margherita": "🍅"
+    Hawaiian: "🍍",
+    Margherita: "🍅",
   };
 
-  selectedPizzas.forEach(pizza => {
+  selectedPizzas.forEach((pizza) => {
     orderArray.push(pizzaEmojis[pizza]);
   });
 
@@ -63,18 +63,20 @@ function resetOrderList() {
 }
 
 function displayAllOrders() {
-  const selectedPizzaObjects = orderArray.map(emoji => {
-    return pizzas.find(pizza => {
-      const pizzaEmojis = {
-        "Pepperoni": "🍕",
-        "Vegetarian": "🥗",
-        "Meat Lovers": "🥩",
-        "Hawaiian": "🍍",
-        "Margherita": "🍅"
-      };
-      return pizzaEmojis[pizza.name] === emoji;
-    });
-  }).filter(Boolean);
+  const selectedPizzaObjects = orderArray
+    .map((emoji) => {
+      return pizzas.find((pizza) => {
+        const pizzaEmojis = {
+          Pepperoni: "🍕",
+          Vegetarian: "🥗",
+          "Meat Lovers": "🥩",
+          Hawaiian: "🍍",
+          Margherita: "🍅",
+        };
+        return pizzaEmojis[pizza.name] === emoji;
+      });
+    })
+    .filter(Boolean);
 
   displayPizzas(selectedPizzaObjects);
 }

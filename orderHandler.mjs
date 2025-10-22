@@ -8,7 +8,7 @@ let orderArray = [];
 export function initializeOrderHandler() {
   const form = document.getElementById("pizza-form");
   const orderList = document.getElementById("order-list");
-  const pizzasSelect = document.getElementById("pizzas");
+  const pizzasSelect = document.getElementById("selectPizza");
   const resetButton = document.getElementById("reset-button");
   const calculatePriceButton = document.getElementById(
     "calculate-price-button"
